@@ -39,7 +39,7 @@
 <body>
 <div class="wrap">
   <h1>🎬 Video Enhancer</h1>
-  <p class="sub">Free • No upload • Video never leaves your phone</p>
+  <p class="sub">Free • No upload • Video never leaves your phone • v3</p>
 
   <div class="card">
     <h2>1. Video choose karo</h2>
@@ -89,7 +89,7 @@
   <a id="dlBtn" download="enhanced.mp4">⬇️ Enhanced video download karo</a>
 
   <div class="card" style="margin-top:14px">
-    <p class="note">ℹ️ <b>Kaise kaam karta hai:</b> ye tool tumhare phone/browser ke andar hi video process karta hai — video kahin upload nahi hoti, is liye free hai aur private hai. <b>Fast mode</b> on hai — enhance karte waqt neeche % aur bacha hua time (lagbhag kitne sec) dikhega. Lambi video bhi chalegi, bas tab khula rakhna.<br><br>
+    <p class="note">ℹ️ <b>Kaise kaam karta hai:</b> ye tool tumhare phone/browser ke andar hi video process karta hai — video kahin upload nahi hoti, is liye free hai aur private hai. <b>Fast mode</b> on hai — enhance karte waqt neeche % aur bacha hua time (lagbhag kitne sec) dikhega. Lambi video bhi chalegi, bas tab khula rakhna. Engine pehli dafa download hota hai (~30MB, % dikhega) aur phir phone mein save rehta hai — dobara fori load hoga.<br><br>
     ⚠️ <b>Sach:</b> halka blur / dull video theek ho jata hai. Bahut zyada blurry ya bahut chhoti video ko full HD nahi bana sakta — quality ki ek limit hoti hai.<br><br>
     🔗 <b>Link se video?</b> YouTube/Twitch link yahan paste nahi hota — pehle video phone mein download/save karo, phir yahan select karo.</p>
   </div>
@@ -174,6 +174,78 @@ function buildArgs() {
   return ['-i', 'input.mp4', '-filter_complex', fc, '-map', out, '-map', '0:a?', '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '20', '-c:a', 'copy', '-movflags', '+faststart', 'out.mp4'];
 }
 
+// ---- engine loader: download with % progress, save in phone (IndexedDB),
+// CDN fallback if one host is slow/blocked. Next time it loads from cache. ----
+const CORE_CDNS = [
+  { js: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js', wasm: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm' },
+  { js: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js', wasm: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm' },
+];
+function idbOpen() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open('video-enhancer', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('engine');
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function idbGet(key) {
+  try {
+    const db = await idbOpen();
+    return await new Promise((res, rej) => {
+      const q = db.transaction('engine', 'readonly').objectStore('engine').get(key);
+      q.onsuccess = () => res(q.result ?? null);
+      q.onerror = () => rej(q.error);
+    });
+  } catch { return null; }
+}
+async function idbPut(key, val) {
+  try {
+    const db = await idbOpen();
+    await new Promise((res, rej) => {
+      const q = db.transaction('engine', 'readwrite').objectStore('engine').put(val, key);
+      q.onsuccess = () => res();
+      q.onerror = () => rej(q.error);
+    });
+  } catch { /* cache optional — still works without it */ }
+}
+async function fetchWithProgress(url, onp) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const total = +r.headers.get('content-length') || 0;
+  const reader = r.body.getReader();
+  const chunks = [];
+  let got = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value); got += value.length;
+    if (total) onp(got / total);
+  }
+  return new Blob(chunks);
+}
+async function getEngineURLs(onProgress) {
+  const [cj, cw] = await Promise.all([idbGet('core-js'), idbGet('core-wasm')]);
+  if (cj && cw) {
+    onProgress(1, true);
+    return {
+      coreURL: URL.createObjectURL(new Blob([cj], { type: 'text/javascript' })),
+      wasmURL: URL.createObjectURL(new Blob([cw], { type: 'application/wasm' })),
+    };
+  }
+  let lastErr = null;
+  for (const cdn of CORE_CDNS) {
+    try {
+      const jsBlob = await fetchWithProgress(cdn.js, p => onProgress(p * 0.05, false));
+      const wasmBlob = await fetchWithProgress(cdn.wasm, p => onProgress(0.05 + p * 0.95, false));
+      idbPut('core-js', await jsBlob.text());
+      idbPut('core-wasm', await wasmBlob.arrayBuffer());
+      // NOTE: blob must carry a JS MIME type — dynamic import() rejects octet-stream
+      return { coreURL: URL.createObjectURL(new Blob([jsBlob], { type: 'text/javascript' })), wasmURL: URL.createObjectURL(wasmBlob) };
+    } catch (e) { lastErr = e; }
+  }
+  throw lastErr || new Error('Engine download nahi ho raha — internet check karo');
+}
+
 // ---- run ----
 goBtn.onclick = async () => {
   if (!file || busy) return;
@@ -189,7 +261,6 @@ goBtn.onclick = async () => {
   busy = true; goBtn.disabled = true; dlBtn.style.display = 'none';
   try {
     if (!loaded) {
-      setStatus('⏳ Engine load ho raha hai (pehli dafa ~30MB)...');
       ffmpeg = new FFmpeg();
       ffmpeg.on('progress', ({ progress, time }) => {
         setBar(progress * 100);
@@ -202,10 +273,15 @@ goBtn.onclick = async () => {
           setStatus('⚡ Enhance ho raha hai... ' + pct + '%' + (eta ? ' — lagbhag ' + eta + ' sec baaki' : ''));
         }
       });
-      await ffmpeg.load({
-        coreURL: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js',
-        wasmURL: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm'
+      setStatus('⏳ Engine load ho raha hai...');
+      setBar(2);
+      const urls = await getEngineURLs((p, cached) => {
+        setBar(p * 100);
+        setStatus(cached ? '✅ Engine phone se load ho gaya — shuru kar rahe hain...'
+                         : '⏳ Engine download ho raha hai... ' + Math.round(p * 100) + '%');
       });
+      setStatus('⏳ Engine start ho raha hai...');
+      await ffmpeg.load(urls);
       loaded = true;
     }
     setStatus('📥 Video read ho rahi hai...');
