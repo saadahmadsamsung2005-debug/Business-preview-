@@ -89,7 +89,7 @@
   <a id="dlBtn" download="enhanced.mp4">⬇️ Enhanced video download karo</a>
 
   <div class="card" style="margin-top:14px">
-    <p class="note">ℹ️ <b>Kaise kaam karta hai:</b> ye tool tumhare phone/browser ke andar hi video process karta hai — video kahin upload nahi hoti, is liye free hai aur private hai.<br><br>
+    <p class="note">ℹ️ <b>Kaise kaam karta hai:</b> ye tool tumhare phone/browser ke andar hi video process karta hai — video kahin upload nahi hoti, is liye free hai aur private hai. <b>Fast mode</b> on hai — enhance karte waqt neeche % aur bacha hua time (lagbhag kitne sec) dikhega. Lambi video bhi chalegi, bas tab khula rakhna.<br><br>
     ⚠️ <b>Sach:</b> halka blur / dull video theek ho jata hai. Bahut zyada blurry ya bahut chhoti video ko full HD nahi bana sakta — quality ki ek limit hoti hai.<br><br>
     🔗 <b>Link se video?</b> YouTube/Twitch link yahan paste nahi hota — pehle video phone mein download/save karo, phir yahan select karo.</p>
   </div>
@@ -103,7 +103,7 @@ const $ = id => document.getElementById(id);
 const statusEl = $('status'), barEl = $('bar'), barFill = $('barFill');
 const goBtn = $('goBtn'), dlBtn = $('dlBtn');
 let file = null, fileName = 'input.mp4', region = 'full', preset = 'facecam';
-let ffmpeg = null, loaded = false, busy = false, vidH = 0;
+let ffmpeg = null, loaded = false, busy = false, vidH = 0, vidDuration = 0, execStart = 0;
 
 function setStatus(t) { statusEl.textContent = t; }
 function setBar(p) { barEl.style.display = 'block'; barFill.style.width = Math.min(100, Math.max(0, p)) + '%'; }
@@ -120,7 +120,14 @@ function pick(f) {
   $('fileName').textContent = '✅ ' + fileName + ' (' + (f.size / 1048576).toFixed(1) + ' MB)';
   preview.src = URL.createObjectURL(f);
   preview.style.display = 'block';
-  preview.onloadedmetadata = () => { vidH = preview.videoHeight || 0; };
+  preview.onloadedmetadata = () => {
+    vidH = preview.videoHeight || 0;
+    vidDuration = (isFinite(preview.duration) && preview.duration > 0) ? preview.duration : 0;
+    if (vidDuration > 0) {
+      const m = Math.floor(vidDuration / 60), s = Math.round(vidDuration % 60);
+      $('fileName').textContent = '✅ ' + fileName + ' (' + (f.size / 1048576).toFixed(1) + ' MB • ' + m + ':' + String(s).padStart(2, '0') + ')';
+    }
+  };
   goBtn.disabled = false;
   setStatus('Video ready hai. Region aur style choose karke Enhance dabao.');
 }
@@ -150,7 +157,7 @@ function buildArgs() {
   const up = preset === 'upscale';
   if (region === 'full') {
     const vf = up ? 'scale=iw*2:ih*2:flags=lanczos,' + f : f;
-    return ['-i', 'input.mp4', '-vf', vf, '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-c:a', 'copy', '-movflags', '+faststart', 'out.mp4'];
+    return ['-i', 'input.mp4', '-vf', vf, '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '20', '-c:a', 'copy', '-movflags', '+faststart', 'out.mp4'];
   }
   let y0, h;
   if (region === 'top50') { y0 = 0; h = 50; }
@@ -164,12 +171,16 @@ function buildArgs() {
     '[base][enh]overlay=0:' + yPx + '[v0]';
   let out = '[v0]';
   if (up) { fc += ';[v0]scale=iw*2:ih*2:flags=lanczos[v]'; out = '[v]'; }
-  return ['-i', 'input.mp4', '-filter_complex', fc, '-map', out, '-map', '0:a?', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-c:a', 'copy', '-movflags', '+faststart', 'out.mp4'];
+  return ['-i', 'input.mp4', '-filter_complex', fc, '-map', out, '-map', '0:a?', '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '20', '-c:a', 'copy', '-movflags', '+faststart', 'out.mp4'];
 }
 
 // ---- run ----
 goBtn.onclick = async () => {
   if (!file || busy) return;
+  if (file.size > 800 * 1024 * 1024) {
+    setStatus('⚠️ Video bahut badi hai (' + (file.size / 1048576).toFixed(0) + ' MB) — phone ki memory mein nahi aayegi. Pehle usko chhota karke (ya 2-3 min ke parts mein) try karo.');
+    return;
+  }
   if (region !== 'full' && !vidH) {
     // wait briefly for video metadata (height) to load
     for (let i = 0; i < 20 && !vidH; i++) await new Promise(r => setTimeout(r, 200));
@@ -180,7 +191,17 @@ goBtn.onclick = async () => {
     if (!loaded) {
       setStatus('⏳ Engine load ho raha hai (pehli dafa ~30MB)...');
       ffmpeg = new FFmpeg();
-      ffmpeg.on('progress', ({ progress }) => setBar(progress * 100));
+      ffmpeg.on('progress', ({ progress, time }) => {
+        setBar(progress * 100);
+        // live % + time-left estimate (time = processed media microseconds)
+        if (execStart > 0 && vidDuration > 0 && time > 0) {
+          const done = time / 1000000;
+          const pct = Math.min(99, Math.round(done / vidDuration * 100));
+          const elapsed = (Date.now() - execStart) / 1000;
+          const eta = done > 1 ? Math.max(1, Math.round(elapsed * (vidDuration - done) / done)) : null;
+          setStatus('⚡ Enhance ho raha hai... ' + pct + '%' + (eta ? ' — lagbhag ' + eta + ' sec baaki' : ''));
+        }
+      });
       await ffmpeg.load({
         coreURL: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js',
         wasmURL: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm'
@@ -189,8 +210,9 @@ goBtn.onclick = async () => {
     }
     setStatus('📥 Video read ho rahi hai...');
     await ffmpeg.writeFile('input.mp4', await fetchFile(file));
-    setStatus('⚡ Enhance ho raha hai... (video lambi ho to thoda time lagega)');
+    setStatus('⚡ Enhance ho raha hai... (video lambi ho to thoda time lagega — tab khula rakhna)');
     setBar(2);
+    execStart = Date.now();
     await ffmpeg.exec(buildArgs());
     setStatus('📤 Result tayyar ho raha hai...');
     const data = await ffmpeg.readFile('out.mp4');
