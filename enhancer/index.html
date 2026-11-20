@@ -39,7 +39,7 @@
 <body>
 <div class="wrap">
   <h1>🎬 Video Enhancer</h1>
-  <p class="sub">Free • No upload • Video never leaves your phone • v3</p>
+  <p class="sub">Free • No upload • Video never leaves your phone • v4</p>
 
   <div class="card">
     <h2>1. Video choose karo</h2>
@@ -89,7 +89,7 @@
   <a id="dlBtn" download="enhanced.mp4">⬇️ Enhanced video download karo</a>
 
   <div class="card" style="margin-top:14px">
-    <p class="note">ℹ️ <b>Kaise kaam karta hai:</b> ye tool tumhare phone/browser ke andar hi video process karta hai — video kahin upload nahi hoti, is liye free hai aur private hai. <b>Fast mode</b> on hai — enhance karte waqt neeche % aur bacha hua time (lagbhag kitne sec) dikhega. Lambi video bhi chalegi, bas tab khula rakhna. Engine pehli dafa download hota hai (~30MB, % dikhega) aur phir phone mein save rehta hai — dobara fori load hoga.<br><br>
+    <p class="note">ℹ️ <b>Kaise kaam karta hai:</b> ye tool tumhare phone/browser ke andar hi video process karta hai — video kahin upload nahi hoti, is liye free hai aur private hai. <b>Fast mode</b> on hai — enhance karte waqt neeche % aur bacha hua time (lagbhag kitne sec) dikhega. Lambi video bhi chalegi, bas tab khula rakhna. Engine pehli dafa download hota hai (~30MB, % dikhega) aur phir phone mein save rehta hai — dobara fori load hoga. Agar internet slow ho to download mein time lagega — % dekhte raho; WiFi par fast hoga, aur agar ek server slow ho to tool khud doosra server try karta hai.<br><br>
     ⚠️ <b>Sach:</b> halka blur / dull video theek ho jata hai. Bahut zyada blurry ya bahut chhoti video ko full HD nahi bana sakta — quality ki ek limit hoti hai.<br><br>
     🔗 <b>Link se video?</b> YouTube/Twitch link yahan paste nahi hota — pehle video phone mein download/save karo, phir yahan select karo.</p>
   </div>
@@ -209,19 +209,28 @@ async function idbPut(key, val) {
   } catch { /* cache optional — still works without it */ }
 }
 async function fetchWithProgress(url, onp) {
-  const r = await fetch(url);
-  if (!r.ok) throw new Error('HTTP ' + r.status);
-  const total = +r.headers.get('content-length') || 0;
-  const reader = r.body.getReader();
-  const chunks = [];
-  let got = 0;
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    chunks.push(value); got += value.length;
-    if (total) onp(got / total);
-  }
-  return new Blob(chunks);
+  // stall timeout: agar 20 sec tak koi data na aaye (slow/stuck net), abort karo
+  // taake doosra CDN try ho sake — warna fetch hamesha ke liye atak sakta hai
+  const ctrl = new AbortController();
+  let lastChunk = Date.now();
+  const stallTimer = setInterval(() => {
+    if (Date.now() - lastChunk > 20000) ctrl.abort();
+  }, 2000);
+  try {
+    const r = await fetch(url, { signal: ctrl.signal });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const total = +r.headers.get('content-length') || 0;
+    const reader = r.body.getReader();
+    const chunks = [];
+    let got = 0;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      chunks.push(value); got += value.length; lastChunk = Date.now();
+      if (total) onp(got / total);
+    }
+    return new Blob(chunks);
+  } finally { clearInterval(stallTimer); }
 }
 async function getEngineURLs(onProgress) {
   const [cj, cw] = await Promise.all([idbGet('core-js'), idbGet('core-wasm')]);
@@ -241,7 +250,11 @@ async function getEngineURLs(onProgress) {
       idbPut('core-wasm', await wasmBlob.arrayBuffer());
       // NOTE: blob must carry a JS MIME type — dynamic import() rejects octet-stream
       return { coreURL: URL.createObjectURL(new Blob([jsBlob], { type: 'text/javascript' })), wasmURL: URL.createObjectURL(wasmBlob) };
-    } catch (e) { lastErr = e; }
+    } catch (e) {
+      lastErr = e;
+      setStatus('⏳ Pehla server slow/blocked hai — doosra server try kar raha hoon...');
+      setBar(2);
+    }
   }
   throw lastErr || new Error('Engine download nahi ho raha — internet check karo');
 }
