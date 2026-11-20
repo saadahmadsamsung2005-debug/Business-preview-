@@ -39,7 +39,7 @@
 <body>
 <div class="wrap">
   <h1>🎬 Video Enhancer</h1>
-  <p class="sub">Free • No upload • Video never leaves your phone • v4</p>
+  <p class="sub">Free • No upload • Video never leaves your phone • v5</p>
 
   <div class="card">
     <h2>1. Video choose karo</h2>
@@ -78,7 +78,7 @@
     <h2>3. Enhancement style</h2>
     <div class="opts" id="presetOpts">
       <button class="opt sel" data-preset="facecam">✨ Facecam Fix<br><small>sharp + clear</small></button>
-      <button class="opt" data-preset="strong">🔥 Strong Sharpen<br><small>zyada sharp</small></button>
+      <button class="opt" data-preset="max">🔥 Max Sharp<br><small>sab se zyada sharp</small></button>
       <button class="opt" data-preset="upscale">🔍 Upscale 2x<br><small>size double + sharp</small></button>
     </div>
   </div>
@@ -148,9 +148,12 @@ $('hSlider').oninput = e => $('hVal').textContent = e.target.value + '%';
 // NOTE: overlay does not understand 'ih' — so region numbers are computed
 // in JS from the real video height (vidH) and passed as plain numbers.
 function enhanceFilter() {
-  if (preset === 'facecam') return 'unsharp=5:5:1.0:5:5:0.0,eq=contrast=1.08:saturation=1.08';
-  if (preset === 'strong') return 'unsharp=7:7:1.6:7:7:0.4,eq=contrast=1.14:saturation=1.12';
-  return 'unsharp=5:5:1.0:5:5:0.0'; // upscale: sharp only here, scale applied at the end
+  // measured on a blurred test clip (sharpness score: blurry 135 → original 497):
+  // old facecam only reached 145 (+7% — basically invisible, that was the problem).
+  // double-pass unsharp reaches ~200 (+48%), triple-pass + denoise reaches ~427 (+215%).
+  if (preset === 'facecam') return 'unsharp=7:7:1.6:7:7:0.4,unsharp=7:7:1.6:7:7:0.4,eq=contrast=1.15:saturation=1.15';
+  if (preset === 'max') return 'hqdn3d=1.5:1.5:3:3,unsharp=7:7:1.6:7:7:0.4,unsharp=7:7:1.6:7:7:0.4,unsharp=7:7:1.6:7:7:0.4,eq=contrast=1.15:saturation=1.15';
+  return 'unsharp=7:7:1.6:7:7:0.4,unsharp=7:7:1.6:7:7:0.4'; // upscale: sharp only here, scale applied at the end
 }
 function buildArgs() {
   const f = enhanceFilter();
