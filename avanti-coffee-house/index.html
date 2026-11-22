@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Avanti Coffee House — Independent Coffee House in Ilkley</title>
+<meta name="description" content="Avanti Coffee House — Ilkley's first independent coffee house. Hand-roasted coffee, homemade cakes, focaccia and paninis on The Grove, Ilkley. Order online.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Verdana,'Segoe UI',system-ui,sans-serif;background:#faf6f0;color:#2e2118;line-height:1.65}
+.topstrip{text-align:center;font:12px/1.4 system-ui,sans-serif;padding:7px 12px;background:#2e2118;color:#faf6f0}
+header{position:sticky;top:0;z-index:30;background:#faf6f0;box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.nav{max-width:1160px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:12px 5%}
+.logo{display:flex;align-items:center;gap:10px;font:700 20px Georgia,serif;color:#2e2118;text-decoration:none}
+.logo .mk{width:36px;height:36px;border-radius:50%;background:#7b4a2b;color:#fff;display:flex;align-items:center;justify-content:center}
+.logo .mk svg{width:22px;height:22px}
+nav a{color:#2e2118;margin-left:22px;text-decoration:none;font-size:14px}
+nav a.pill{background:#7b4a2b;color:#fff;padding:9px 20px;border-radius:30px;font-weight:700}
+.hero{max-width:1160px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;padding:50px 5% 70px}
+.kick{color:#7b4a2b;font:italic 18px Georgia,serif}
+h1{font:700 clamp(34px,5vw,58px)/1.08 Georgia,serif;margin:10px 0 16px}h1 span{color:#7b4a2b;font-style:italic}
+.lead{font-size:16.5px;color:#6b5646;max-width:460px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 18px}
+.btn{background:#7b4a2b;color:#fff;padding:13px 26px;border-radius:30px;font-weight:700;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:#2e2118;border:2px solid #7b4a2b}
+.stars{font-size:15px}.stars b{color:#7b4a2b}
+.visual{position:relative;background:linear-gradient(135deg,#7b4a2b,#b07a4e);border-radius:28px;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.visual .cup{width:70%;max-width:300px;position:relative;z-index:2}
+.visual .bgbean{position:absolute;color:rgba(255,255,255,.14);width:120px;height:120px}
+.visual .bgbean.p1{top:18px;left:20px;transform:rotate(-18deg)}
+.visual .bgbean.p2{bottom:26px;right:24px;transform:rotate(14deg)}
+.visual .bgbean.p3{top:44%;right:8%;width:64px;height:64px;transform:rotate(24deg)}
+.visual .chip{position:absolute;bottom:22px;left:22px;z-index:3;background:#fff;padding:10px 18px;border-radius:30px;font-weight:700;color:#7b4a2b;box-shadow:0 10px 24px rgba(0,0,0,.15)}
+section{max-width:1160px;margin:auto;padding:40px 5%}
+.eye{color:#7b4a2b;font:italic 16px Georgia,serif}h2{font:700 clamp(26px,3.4vw,38px)/1.15 Georgia,serif;margin:6px 0 22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:#fff;border:1px solid #e8dccb;border-radius:16px;padding:22px}
+.card .ic{width:40px;height:40px;color:#7b4a2b;margin-bottom:10px}.card .ic svg{width:100%;height:100%}
+.card h3{font:700 19px Georgia,serif;margin-bottom:6px}.card p{color:#6b5646;font-size:14.5px;min-height:66px}
+.card .price{font-weight:700;color:#7b4a2b;margin-top:4px}
+.acts{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.ord{background:#7b4a2b;color:#fff;border:0;padding:10px 18px;border-radius:24px;font-weight:700;cursor:pointer;font-size:14px}
+.ask{color:#7b4a2b;font-size:14px;align-self:center}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.about p{color:#6b5646;margin-bottom:12px}
+.tick{list-style:none;margin-top:14px}.tick li{padding:7px 0 7px 30px;position:relative}
+.tick li:before{content:"✓";position:absolute;left:0;color:#7b4a2b;font-weight:700}
+.rev{text-align:center;background:#7b4a2b;color:#fff;border-radius:20px;padding:34px 5%}
+.rev .big{font:700 54px Georgia,serif}.rev .big small{font-size:30px}
+.bookwrap{background:#f1e6d6;border-radius:20px}
+.bk2{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start}
+.fm{background:#fff;border:1px solid #e8dccb;border-radius:16px;padding:24px}
+.fm h3{font:700 21px Georgia,serif;margin-bottom:4px}.fm .note{color:#6b5646;font-size:14px;margin-bottom:16px}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 4px}
+input,select,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid #e8dccb;border-radius:8px}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.send{width:100%;margin-top:16px;background:#7b4a2b;color:#fff;border:0;padding:13px;border-radius:30px;font-weight:700;cursor:pointer;font-size:15px}
+.ok{display:none;margin-top:12px;font-size:14px;padding:11px;border-radius:8px;background:#e8f5e9;color:#2e7d32}
+.visit{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.visit h4{font:700 15px Georgia,serif;color:#7b4a2b;margin-bottom:6px}
+.visit a{color:#2e2118;overflow-wrap:anywhere}
+footer{text-align:center;padding:26px 5% 90px;color:#6b5646;font-size:13.5px}
+footer .by{margin-top:4px}
+.fab{position:fixed;left:18px;bottom:18px;z-index:40;background:#7b4a2b;color:#fff;padding:13px 22px;border-radius:30px;font-weight:700;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+@media(max-width:760px){.hero,.about,.bk2{grid-template-columns:1fr}.visual{min-height:320px}.row{grid-template-columns:1fr}nav a:not(.pill){display:none}}
+</style>
+</head>
+<body>
+<div class="topstrip">WEBSITE PREVIEW · made for Avanti Coffee House by Saad Ahmed · illustrated sample — your own photos go here</div>
+<header><div class="nav"><a class="logo" href="#"><span class="mk"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="currentColor"><path d="M14 22h30v14a12 12 0 0 1-12 12h-6a12 12 0 0 1-12-12V22z"/><path d="M44 24h6a6 6 0 0 1 0 12h-6" fill="none" stroke="currentColor" stroke-width="4"/></g></svg></span>Avanti</a>
+<nav><a href="#menu">Menu</a><a href="#about">About</a><a href="#visit">Contact</a><a class="pill" href="#order">Order now</a></nav></div></header>
+<div class="hero"><div>
+<span class="kick">Ilkley&#8217;s first independent coffee house · The Grove</span>
+<h1>Proper coffee, homemade cakes, <span>served with a smile.</span></h1>
+<p class="lead">Hand-roasted beans, a large selection of teas and coffees, and food made fresh every day — sandwiches, soups, paninis and homemade cakes in a friendly, relaxed atmosphere on The Grove Promenade.</p>
+<div class="btns"><a class="btn" href="#order">Order now</a><a class="btn ghost" href="tel:01943609874">Call 01943 609874</a><a class="btn ghost" href="#menu">See the menu</a></div>
+<div class="stars"><span>★★★★★</span> <b>4.6</b> from 47 Google reviews · TripAdvisor Certificate of Excellence</div>
+</div>
+<div class="visual"><span class="bgbean p1"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="16" ry="22" fill="currentColor"/></svg></span><span class="bgbean p2"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="16" ry="22" fill="currentColor"/></svg></span><span class="bgbean p3"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="16" ry="22" fill="currentColor"/></svg></span>
+<div class="cup"><svg viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="rgba(255,255,255,.9)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 80h100v20a50 50 0 0 1-50 50h0a50 50 0 0 1-50-50V80z"/><path d="M150 86h12a14 14 0 0 1 0 28h-14"/><path d="M70 60c0-8 10-8 10-16M95 60c0-8 10-8 10-16M120 60c0-8 10-8 10-16"/></g><ellipse cx="100" cy="168" rx="62" ry="8" fill="rgba(255,255,255,.85)"/></svg></div><span class="chip">Hand-roasted · Ilkley</span></div></div>
+<section id="menu"><p class="eye">Our menu</p><h2>Made fresh, every day</h2><div class="cards">
+<div class="card"><div class="ic"><svg viewBox="0 0 64 64"><g fill="currentColor"><path d="M14 22h30v14a12 12 0 0 1-12 12h-6a12 12 0 0 1-12-12V22z"/><path d="M44 24h6a6 6 0 0 1 0 12h-6" fill="none" stroke="currentColor" stroke-width="4"/></g></svg></div><h3>Hand-Roasted Coffee</h3><p>Our own hand-roasted beans, brewed properly — espresso, flat white, latte, cappuccino and filter, just how you like it.</p><div class="acts"><button class="ord" onclick="orderItem('Hand-Roasted Coffee')">Order now</button><a class="ask" href="mailto:info@avanticoffeeco.com?subject=Hand-Roasted%20Coffee%20enquiry">Ask a question</a></div></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 64 64"><g fill="currentColor"><circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="12" fill="#faf6f0"/></g></svg></div><h3>Teas &amp; Hot Drinks</h3><p>A large selection of teas alongside our coffees — the perfect slow start to a morning in Ilkley.</p><div class="acts"><button class="ord" onclick="orderItem('Teas & Hot Drinks')">Order now</button><a class="ask" href="mailto:info@avanticoffeeco.com?subject=Teas%20enquiry">Ask a question</a></div></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 64 64"><g fill="currentColor"><path d="M8 28h48v8H8zM12 40h40v6H12z"/><circle cx="32" cy="20" r="8"/></g></svg></div><h3>Homemade Cakes</h3><p>Cakes baked in-house, plus toasted teacakes and Danish pastries — the ideal partner for your coffee.</p><div class="acts"><button class="ord" onclick="orderItem('Homemade Cakes')">Order now</button><a class="ask" href="mailto:info@avanticoffeeco.com?subject=Homemade%20Cakes%20enquiry">Ask a question</a></div></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 64 64"><g fill="currentColor"><rect x="10" y="24" width="44" height="18" rx="6"/><rect x="16" y="14" width="32" height="8" rx="4"/></g></svg></div><h3>Sandwiches &amp; Paninis</h3><p>Sandwiches, soups and hot paninis available all day, with different daily specials on the blackboard.</p><div class="acts"><button class="ord" onclick="orderItem('Sandwiches & Paninis')">Order now</button><a class="ask" href="mailto:info@avanticoffeeco.com?subject=Sandwiches%20enquiry">Ask a question</a></div></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 64 64"><g fill="currentColor"><path d="M12 20h40l-4 28a8 8 0 0 1-8 6H24a8 8 0 0 1-8-6l-4-28z"/></g></svg></div><h3>Focaccia</h3><p>Fresh focaccia, made daily — a proper lunch on The Grove, eaten in or taken away.</p><div class="acts"><button class="ord" onclick="orderItem('Focaccia')">Order now</button><a class="ask" href="mailto:info@avanticoffeeco.com?subject=Focaccia%20enquiry">Ask a question</a></div></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 64 64"><g fill="currentColor"><path d="M32 8l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/></g></svg></div><h3>Daily Specials</h3><p>Real home-cooked food with different daily specials on the blackboard — soups, light meals and desserts.</p><div class="acts"><button class="ord" onclick="orderItem('Daily Specials')">Order now</button><a class="ask" href="mailto:info@avanticoffeeco.com?subject=Daily%20Specials%20enquiry">Ask a question</a></div></div>
+</div></section>
+<section id="about" class="about"><div><p class="eye">About Avanti</p><h2>Ilkley&#8217;s first independent coffee house</h2>
+<p>Avanti Coffee Co. prides itself on excellent food, drink and customer service, given in a friendly and relaxed atmosphere. We were Ilkley&#8217;s first independent coffee house — and we still do things the independent way.</p><p>Everything is made with care: hand-roasted coffee, homemade cakes, and food cooked fresh each day. Come and see us on The Grove Promenade, right in the heart of Ilkley.</p><ul class="tick"><li>Ilkley&#8217;s first independent coffee house</li><li>Hand-roasted beans, brewed properly</li><li>Homemade cakes, baked in-house</li><li>Rated 4.6★ · TripAdvisor Certificate of Excellence</li></ul></div>
+<div class="visual" style="min-height:340px"><span class="bgbean p1"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="16" ry="22" fill="currentColor"/></svg></span><span class="bgbean p2"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="16" ry="22" fill="currentColor"/></svg></span>
+<div class="cup"><svg viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="rgba(255,255,255,.9)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 80h100v20a50 50 0 0 1-50 50h0a50 50 0 0 1-50-50V80z"/><path d="M150 86h12a14 14 0 0 1 0 28h-14"/><path d="M70 60c0-8 10-8 10-16M95 60c0-8 10-8 10-16M120 60c0-8 10-8 10-16"/></g><ellipse cx="100" cy="168" rx="62" ry="8" fill="rgba(255,255,255,.85)"/></svg></div><span class="chip">On The Grove · Ilkley</span></div></section>
+<section><div class="rev"><div class="big">4.6<small>★</small></div><p>Rated 4.6★ from 47 Google reviews · TripAdvisor Certificate of Excellence</p></div></section>
+<div class="bookwrap" id="order"><section class="bk2"><div><p class="eye">Order online</p><h2>Order ahead in seconds</h2>
+<p>No more queuing or waiting to be served. Pick what you fancy, choose a time and send — we&#8217;ll have it ready for you.</p></div><div class="fm">
+ <h3>Place an order</h3>
+ <p class="note">Send your order and we will reply by email to confirm.</p>
+ <div class="row"><div><label for="n">Your name</label><input id="n" placeholder="Your name"></div>
+ <div><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div></div>
+ <div class="row"><div><label for="t">Collection time</label><input id="t" type="time"></div>
+ <div><label for="d">Date</label><input id="d" type="date"></div></div>
+ <label for="it">Item</label><select id="it"><option>Hand-Roasted Coffee</option><option>Teas &amp; Hot Drinks</option><option>Homemade Cakes</option><option>Sandwiches &amp; Paninis</option><option>Focaccia</option><option>Daily Specials</option><option>Not sure yet</option></select>
+ <label for="m">Details</label><textarea id="m" placeholder="How many, any extras, anything we should know..."></textarea>
+ <button class="send" onclick="send()">Send order</button>
+ <div class="ok" id="ok">Opening your email app with your order…</div>
+</div></section></div>
+<section id="visit" class="visit"><div><h4>Where</h4><p>Avanti Coffee House<br>6 The Grove Promenade, Ilkley LS29 8AF</p></div>
+<div><h4>Hours</h4><p>Mon–Fri: 9am – 4pm<br>Sat: 9am – 5pm · Sun: 10am – 4pm</p></div>
+<div><h4>Email</h4><p><a href="mailto:info@avanticoffeeco.com">info@avanticoffeeco.com</a></p></div>
+<div><h4>Phone</h4><p><a href="tel:01943609874">01943 609874</a></p></div></section>
+<footer><p>© Avanti Coffee House · Ilkley, England</p><p class="by">Preview website by Saad Ahmed</p></footer>
+<a class="fab" href="#order">Order now</a>
+<script>
+function send(){var g=function(i){return encodeURIComponent(document.getElementById(i).value)};var b="Name: "+g('n')+"%0AEmail: "+g('e')+"%0ACollection time: "+g('t')+"%0ADate: "+g('d')+"%0AItem: "+g('it')+"%0ADetails: "+g('m');document.getElementById('ok').style.display='block';location.href="mailto:info@avanticoffeeco.com?subject=Order%20-%20Avanti%20Coffee%20House&body="+b;}
+function orderItem(x){document.getElementById('it').value=x;document.getElementById('order').scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('n').focus()},700);}
+</script>
+</body>
+</html>
