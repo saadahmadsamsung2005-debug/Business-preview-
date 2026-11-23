@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Butter &amp; Crumb Bakery — Small-Batch Micro Bakery in Gresham, OR</title>
+<meta name="description" content="Butter &amp; Crumb Bakery — Small-batch handcrafted baked goods in Gresham, Oregon. Pre-order on Facebook and pick up fresh.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Verdana,'Segoe UI',system-ui,sans-serif;background:#faf6f0;color:#2e2118;line-height:1.65}
+.topstrip{text-align:center;font:12px/1.4 system-ui,sans-serif;padding:7px 12px;background:#2e2118;color:#faf6f0}
+header{position:sticky;top:0;z-index:30;background:#faf6f0;box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.nav{max-width:1160px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:12px 5%}
+.logo{display:flex;align-items:center;gap:10px;font:700 20px Georgia,serif;color:#2e2118;text-decoration:none}
+.logo .mk{width:36px;height:36px;border-radius:50%;background:#9c6644;color:#fff;display:flex;align-items:center;justify-content:center}
+.logo .mk svg{width:22px;height:22px}
+nav a{color:#2e2118;margin-left:22px;text-decoration:none;font-size:14px}
+nav a.pill{background:#9c6644;color:#fff;padding:9px 20px;border-radius:30px;font-weight:700}
+.hero{max-width:1160px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;padding:50px 5% 70px}
+.kick{color:#9c6644;font:italic 18px Georgia,serif}
+h1{font:700 clamp(34px,5vw,58px)/1.08 Georgia,serif;margin:10px 0 16px}h1 span{color:#9c6644;font-style:italic}
+.lead{font-size:16.5px;color:#6b5646;max-width:460px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 18px}
+.btn{background:#9c6644;color:#fff;padding:13px 26px;border-radius:30px;font-weight:700;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:#2e2118;border:2px solid #9c6644}
+.stars{font-size:15px}.stars b{color:#9c6644}
+.visual{position:relative;background:linear-gradient(135deg,#9c6644,#c98a5a);border-radius:28px;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.visual .loaf{width:70%;max-width:300px;position:relative;z-index:2}
+.visual .bgw{position:absolute;color:rgba(255,255,255,.14);width:120px;height:120px}
+.visual .bgw.p1{top:18px;left:20px;transform:rotate(-18deg)}
+.visual .bgw.p2{bottom:26px;right:24px;transform:rotate(14deg)}
+.visual .bgw.p3{top:44%;right:8%;width:64px;height:64px;transform:rotate(24deg)}
+.visual .chip{position:absolute;bottom:22px;left:22px;z-index:3;background:#fff;padding:10px 18px;border-radius:30px;font-weight:700;color:#9c6644;box-shadow:0 10px 24px rgba(0,0,0,.15)}
+section{max-width:1160px;margin:auto;padding:40px 5%}
+.eye{color:#9c6644;font:italic 16px Georgia,serif}h2{font:700 clamp(26px,3.4vw,38px)/1.15 Georgia,serif;margin:6px 0 22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:#fff;border:1px solid #e8dccb;border-radius:16px;padding:22px}
+.card .ic{width:40px;height:40px;color:#9c6644;margin-bottom:10px}.card .ic svg{width:100%;height:100%}
+.card h3{font:700 19px Georgia,serif;margin-bottom:6px}.card p{color:#6b5646;font-size:14.5px;min-height:66px}
+.acts{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.ord{background:#9c6644;color:#fff;border:0;padding:10px 18px;border-radius:24px;font-weight:700;cursor:pointer;font-size:14px}
+.ask{color:#9c6644;font-size:14px;align-self:center}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.about p{color:#6b5646;margin-bottom:12px}
+.tick{list-style:none;margin-top:14px}.tick li{padding:7px 0 7px 30px;position:relative}
+.tick li:before{content:"✓";position:absolute;left:0;color:#9c6644;font-weight:700}
+.rev{text-align:center;background:#9c6644;color:#fff;border-radius:20px;padding:34px 5%}
+.rev .big{font:700 54px Georgia,serif}.rev .big small{font-size:30px}
+.bookwrap{background:#f1e6d6;border-radius:20px}
+.bk2{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start}
+.fm{background:#fff;border:1px solid #e8dccb;border-radius:16px;padding:24px}
+.fm h3{font:700 21px Georgia,serif;margin-bottom:4px}.fm .note{color:#6b5646;font-size:14px;margin-bottom:16px}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 4px}
+input,select,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid #e8dccb;border-radius:8px}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.send{width:100%;margin-top:16px;background:#9c6644;color:#fff;border:0;padding:13px;border-radius:30px;font-weight:700;cursor:pointer;font-size:15px}
+.ok{display:none;margin-top:12px;font-size:14px;padding:11px;border-radius:8px;background:#e8f5e9;color:#2e7d32}
+.visit{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.visit h4{font:700 15px Georgia,serif;color:#9c6644;margin-bottom:6px}
+.visit a{color:#2e2118;overflow-wrap:anywhere}
+footer{text-align:center;padding:26px 5% 90px;color:#6b5646;font-size:13.5px}
+footer .by{margin-top:4px}
+.fab{position:fixed;left:18px;bottom:18px;z-index:40;background:#9c6644;color:#fff;padding:13px 22px;border-radius:30px;font-weight:700;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+@media(max-width:760px){.hero,.about,.bk2{grid-template-columns:1fr}.visual{min-height:320px}.row{grid-template-columns:1fr}nav a:not(.pill){display:none}}
+</style>
+</head>
+<body>
+<div class="topstrip">WEBSITE PREVIEW · made for Butter &amp; Crumb Bakery by Saad Ahmed · illustrated sample — your own photos go here</div>
+<header><div class="nav"><a class="logo" href="#"><span class="mk"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></span>Butter &amp; Crumb</a>
+<nav><a href="#menu">Menu</a><a href="#about">About</a><a href="#visit">Contact</a><a class="pill" href="#order">Order now</a></nav></div></header>
+<div class="hero"><div>
+<span class="kick">Gresham’s small-batch micro bakery · made with love</span>
+<h1>Handcrafted bakes, <span>small-batch &amp; made with love.</span></h1>
+<p class="lead">A micro cottage bakery in the heart of Gresham, run by Koryn. Small-batch handcrafted baked goods — pre-order on Facebook and pick up fresh in Gresham.</p>
+<div class="btns"><a class="btn" href="#order">Order now</a><a class="btn ghost" href="#menu">See the menu</a></div>
+<div class="stars">Small-batch micro bakery · Gresham, Oregon</div>
+</div>
+<div class="visual"><span class="bgw p1"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></span><span class="bgw p2"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></span><span class="bgw p3"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></span>
+<div class="loaf"><svg viewBox='0 0 200 200' aria-hidden='true'><g fill='none' stroke='rgba(255,255,255,.9)' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path d='M35 132a65 55 0 0 1 130 0v3a12 12 0 0 1-12 12H47a12 12 0 0 1-12-12v-3z'/><path d='M72 108l14-14'/><path d='M100 100l14-14'/><path d='M128 108l14-14'/><path d='M35 162h130'/></g></svg></div><span class="chip">Small-batch · Gresham</span></div></div>
+<section id="menu"><p class="eye">Our menu</p><h2>Baked fresh, in small batches</h2><div class="cards"><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></div><h3>Pumpkin Cinnamon Sugar Focaccia</h3><p>Our current bake — soft focaccia with pumpkin, cinnamon and sugar, made in small batches.</p><div class="acts"><button class="ord" onclick="orderItem('Pumpkin Cinnamon Sugar Focaccia')">Order now</button><a class="ask" href="mailto:butter.crumb.bakery.oregon@gmail.com?subject=Pumpkin%20Cinnamon%20Sugar%20Focaccia%20enquiry%20-%20Butter%20%26%20Crumb%20Bakery">Ask a question</a></div></div><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></div><h3>Small-Batch Baked Goods</h3><p>Handcrafted bakes made with love in Gresham — breads, cakes and sweet treats.</p><div class="acts"><button class="ord" onclick="orderItem('Small-Batch Baked Goods')">Order now</button><a class="ask" href="mailto:butter.crumb.bakery.oregon@gmail.com?subject=Small-Batch%20Baked%20Goods%20enquiry%20-%20Butter%20%26%20Crumb%20Bakery">Ask a question</a></div></div><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></div><h3>Seasonal Specials</h3><p>Seasonal bakes that change with the calendar — ask what’s fresh this week.</p><div class="acts"><button class="ord" onclick="orderItem('Seasonal Specials')">Order now</button><a class="ask" href="mailto:butter.crumb.bakery.oregon@gmail.com?subject=Seasonal%20Specials%20enquiry%20-%20Butter%20%26%20Crumb%20Bakery">Ask a question</a></div></div><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></div><h3>Custom Orders</h3><p>Cakes and bakes made to order for birthdays, holidays and gatherings.</p><div class="acts"><button class="ord" onclick="orderItem('Custom Orders')">Order now</button><a class="ask" href="mailto:butter.crumb.bakery.oregon@gmail.com?subject=Custom%20Orders%20enquiry%20-%20Butter%20%26%20Crumb%20Bakery">Ask a question</a></div></div><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></div><h3>Holiday Pre-orders</h3><p>Pre-order ahead for the holidays — pickup in Gresham, arranged by email or Facebook.</p><div class="acts"><button class="ord" onclick="orderItem('Holiday Pre-orders')">Order now</button><a class="ask" href="mailto:butter.crumb.bakery.oregon@gmail.com?subject=Holiday%20Pre-orders%20enquiry%20-%20Butter%20%26%20Crumb%20Bakery">Ask a question</a></div></div><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></div><h3>Artisan Fair Finds</h3><p>Find us at local artisan fairs — most recently the Italia Holiday Artisan Fair at Club Paesano.</p><div class="acts"><button class="ord" onclick="orderItem('Artisan Fair Finds')">Order now</button><a class="ask" href="mailto:butter.crumb.bakery.oregon@gmail.com?subject=Artisan%20Fair%20Finds%20enquiry%20-%20Butter%20%26%20Crumb%20Bakery">Ask a question</a></div></div></div></section>
+<section id="about" class="about"><div><p class="eye">About Butter &amp; Crumb</p><h2>A little cottage bakery with a big heart</h2>
+<p>Butter &amp; Crumb Bakery is a micro cottage bakery in Gresham, Oregon, owned and operated by Koryn. Every bake is small-batch and handcrafted — made with love, one tray at a time.</p><p>We sell at local artisan fairs — most recently the Italia Holiday Artisan Fair at Club Paesano in Gresham — and take pre-orders on Facebook. Order ahead, and pick up fresh.</p><ul class="tick"><li>Small-batch, handcrafted in Gresham</li><li>Pre-order on Facebook — easy pickup</li><li>Seasonal bakes, made with love</li><li>Local artisan fair vendor</li></ul></div>
+<div class="visual" style="min-height:340px"><span class="bgw p1"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></span><span class="bgw p2"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><ellipse cx='32' cy='14' rx='7' ry='12'/><ellipse cx='20' cy='26' rx='6' ry='10' transform='rotate(-25 20 26)'/><ellipse cx='44' cy='26' rx='6' ry='10' transform='rotate(25 44 26)'/><ellipse cx='20' cy='42' rx='6' ry='10' transform='rotate(-25 20 42)'/><ellipse cx='44' cy='42' rx='6' ry='10' transform='rotate(25 44 42)'/></g></svg></span>
+<div class="loaf"><svg viewBox='0 0 200 200' aria-hidden='true'><g fill='none' stroke='rgba(255,255,255,.9)' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path d='M35 132a65 55 0 0 1 130 0v3a12 12 0 0 1-12 12H47a12 12 0 0 1-12-12v-3z'/><path d='M72 108l14-14'/><path d='M100 100l14-14'/><path d='M128 108l14-14'/><path d='M35 162h130'/></g></svg></div><span class="chip">Made with love in Gresham</span></div></section>
+
+<div class="bookwrap" id="order"><section class="bk2"><div><p class="eye">Order online</p><h2>Pre-order in seconds</h2>
+<p>No more messaging back and forth. Pick what you fancy, choose a pickup date and send — we’ll confirm by email.</p></div><div class="fm">
+ <h3>Place a pre-order</h3>
+ <p class="note">Send your order and we will reply by email to confirm pickup.</p>
+ <div class="row"><div><label for="n">Your name</label><input id="n" placeholder="Your name"></div>
+ <div><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div></div>
+ <div class="row"><div><label for="t">Pickup time</label><input id="t" type="time"></div>
+ <div><label for="d">Date</label><input id="d" type="date"></div></div>
+ <label for="it">Item</label><select id="it"><option>Pumpkin Cinnamon Sugar Focaccia</option><option>Small-Batch Baked Goods</option><option>Seasonal Specials</option><option>Custom Orders</option><option>Holiday Pre-orders</option><option>Not sure yet</option></select>
+ <label for="m">Details</label><textarea id="m" placeholder="How many, any extras, anything we should know..."></textarea>
+ <button class="send" onclick="send()">Send order</button>
+ <div class="ok" id="ok">Opening your email app with your order…</div>
+</div></section></div>
+<section id="visit" class="visit"><div><h4>Where</h4><p>Gresham, Oregon · cottage bakery — pickup details when you order</p></div>
+<div><h4>Hours</h4><p>Pre-orders via Facebook · pickup in Gresham</p></div>
+<div><h4>Email</h4><p><a href="mailto:butter.crumb.bakery.oregon@gmail.com">butter.crumb.bakery.oregon@gmail.com</a></p></div>
+<div><h4>Phone</h4><p>Order via Facebook or email</p></div></section>
+<footer><p>© Butter &amp; Crumb Bakery · Gresham, Oregon</p><p class="by">Preview website by Saad Ahmed</p></footer>
+<a class="fab" href="#order">Order now</a>
+<script>
+function send(){var g=function(i){return encodeURIComponent(document.getElementById(i).value)};var b="Name: "+g('n')+"%0AEmail: "+g('e')+"%0APickup time: "+g('t')+"%0ADate: "+g('d')+"%0AItem: "+g('it')+"%0ADetails: "+g('m');document.getElementById('ok').style.display='block';location.href="mailto:butter.crumb.bakery.oregon@gmail.com?subject=Order%20-%20Butter%20%26%20Crumb%20Bakery&body="+b;}
+function orderItem(x){document.getElementById('it').value=x;document.getElementById('order').scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('n').focus()},700);}
+</script>
+</body>
+</html>
