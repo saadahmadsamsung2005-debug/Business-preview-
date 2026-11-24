@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AS Italian Street Food — Italian Street Food Truck in Sydney</title>
+<meta name="description" content="AS Italian Street Food — Italian street food truck in Sydney — woodfired pizza, arrosticini, gnocchi and panini at festivals and events. Book the truck.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Verdana,'Segoe UI',system-ui,sans-serif;background:#fdf7f2;color:#33241f;line-height:1.65}
+.topstrip{text-align:center;font:12px/1.4 system-ui,sans-serif;padding:7px 12px;background:#33241f;color:#fdf7f2}
+header{position:sticky;top:0;z-index:30;background:#fdf7f2;box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.nav{max-width:1160px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:12px 5%}
+.logo{display:flex;align-items:center;gap:10px;font:700 20px Georgia,serif;color:#33241f;text-decoration:none}
+.logo .mk{width:36px;height:36px;border-radius:50%;background:#b03a2e;color:#fff;display:flex;align-items:center;justify-content:center}
+.logo .mk svg{width:22px;height:22px}
+nav a{color:#33241f;margin-left:22px;text-decoration:none;font-size:14px}
+nav a.pill{background:#b03a2e;color:#fff;padding:9px 20px;border-radius:30px;font-weight:700}
+.hero{max-width:1160px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;padding:50px 5% 70px}
+.kick{color:#b03a2e;font:italic 18px Georgia,serif}
+h1{font:700 clamp(34px,5vw,58px)/1.08 Georgia,serif;margin:10px 0 16px}h1 span{color:#b03a2e;font-style:italic}
+.lead{font-size:16.5px;color:#6f5750;max-width:460px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 18px}
+.btn{background:#b03a2e;color:#fff;padding:13px 26px;border-radius:30px;font-weight:700;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:#33241f;border:2px solid #b03a2e}
+.stars{font-size:15px}.stars b{color:#b03a2e}
+.visual{position:relative;background:linear-gradient(135deg,#b03a2e,#e07a5f);border-radius:28px;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.visual .heroic{width:70%;max-width:300px;position:relative;z-index:2}
+.visual .bgm{position:absolute;color:rgba(255,255,255,.14);width:120px;height:120px}
+.visual .bgm.p1{top:18px;left:20px;transform:rotate(-18deg)}
+.visual .bgm.p2{bottom:26px;right:24px;transform:rotate(14deg)}
+.visual .bgm.p3{top:44%;right:8%;width:64px;height:64px;transform:rotate(24deg)}
+.visual .chip{position:absolute;bottom:22px;left:22px;z-index:3;background:#fff;padding:10px 18px;border-radius:30px;font-weight:700;color:#b03a2e;box-shadow:0 10px 24px rgba(0,0,0,.15)}
+section{max-width:1160px;margin:auto;padding:40px 5%}
+.eye{color:#b03a2e;font:italic 16px Georgia,serif}h2{font:700 clamp(26px,3.4vw,38px)/1.15 Georgia,serif;margin:6px 0 22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:#fff;border:1px solid #eed9cb;border-radius:16px;padding:22px}
+.card .ic{width:40px;height:40px;color:#b03a2e;margin-bottom:10px}.card .ic svg{width:100%;height:100%}
+.card h3{font:700 19px Georgia,serif;margin-bottom:6px}.card p{color:#6f5750;font-size:14.5px;min-height:66px}
+.acts{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.ord{background:#b03a2e;color:#fff;border:0;padding:10px 18px;border-radius:24px;font-weight:700;cursor:pointer;font-size:14px}
+.ask{color:#b03a2e;font-size:14px;align-self:center}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.about p{color:#6f5750;margin-bottom:12px}
+.tick{list-style:none;margin-top:14px}.tick li{padding:7px 0 7px 30px;position:relative}
+.tick li:before{content:"✓";position:absolute;left:0;color:#b03a2e;font-weight:700}
+.rev{text-align:center;background:#b03a2e;color:#fff;border-radius:20px;padding:34px 5%}
+.rev .big{font:700 54px Georgia,serif}.rev .big small{font-size:30px}
+.bookwrap{background:#f9e8dd;border-radius:20px}
+.bk2{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start}
+.fm{background:#fff;border:1px solid #eed9cb;border-radius:16px;padding:24px}
+.fm h3{font:700 21px Georgia,serif;margin-bottom:4px}.fm .note{color:#6f5750;font-size:14px;margin-bottom:16px}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 4px}
+input,select,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid #eed9cb;border-radius:8px}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.send{width:100%;margin-top:16px;background:#b03a2e;color:#fff;border:0;padding:13px;border-radius:30px;font-weight:700;cursor:pointer;font-size:15px}
+.ok{display:none;margin-top:12px;font-size:14px;padding:11px;border-radius:8px;background:#e8f5e9;color:#2e7d32}
+.visit{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.visit h4{font:700 15px Georgia,serif;color:#b03a2e;margin-bottom:6px}
+.visit a{color:#33241f;overflow-wrap:anywhere}
+footer{text-align:center;padding:26px 5% 90px;color:#6f5750;font-size:13.5px}
+footer .by{margin-top:4px}
+.fab{position:fixed;left:18px;bottom:18px;z-index:40;background:#b03a2e;color:#fff;padding:13px 22px;border-radius:30px;font-weight:700;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+@media(max-width:760px){.hero,.about,.bk2{grid-template-columns:1fr}.visual{min-height:320px}.row{grid-template-columns:1fr}nav a:not(.pill){display:none}}
+</style>
+</head>
+<body>
+<div class="topstrip">WEBSITE PREVIEW · made for AS Italian Street Food by Saad Ahmed · illustrated sample — your own photos go here</div>
+<header><div class="nav"><a class="logo" href="#"><span class="mk"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></span>AS Italian</a>
+<nav><a href="#services">Menu</a><a href="#about">About</a><a href="#visit">Contact</a><a class="pill" href="#order">Book the truck</a></nav></div></header>
+<div class="hero"><div>
+<span class="kick">Sydney’s Inner West · festivals &amp; events</span>
+<h1>Real Italian street food, <span>cooked fresh at your event.</span></h1>
+<p class="lead">AS Italian Street Food brings woodfired pizza, arrosticini, gnocchi and panini to festivals and events across Sydney — run by Antonio Sabia of Puntino Catering &amp; Events, cooking Italian street food for over a decade.</p>
+<div class="btns"><a class="btn" href="#order">Book the truck</a><a class="btn ghost" href="tel:0415789674">Call 0415 789 674</a><a class="btn ghost" href="#services">See the menu</a></div>
+<div class="stars">Festival favourite · Sydney’s Inner West · Pre-approved City of Canada Bay vendor</div>
+</div>
+<div class="visual"><span class="bgm p1"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></span><span class="bgm p2"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></span><span class="bgm p3"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></span>
+<div class="heroic"><svg viewBox='0 0 200 200' aria-hidden='true'><g fill='none' stroke='rgba(255,255,255,.92)' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path d='M28 78h108v52H28z'/><path d='M136 92h28l16 16v22h-44z'/><path d='M48 78V58a6 6 0 0 1 6-6h72a6 6 0 0 1 6 6v20'/><path d='M28 96h108'/><path d='M60 78v18M100 78v18'/></g><circle cx='62' cy='134' r='13' fill='rgba(255,255,255,.92)'/><circle cx='152' cy='134' r='13' fill='rgba(255,255,255,.92)'/><circle cx='62' cy='134' r='5' fill='#b03a2e'/><circle cx='152' cy='134' r='5' fill='#b03a2e'/></svg></div><span class="chip">Festivals · Events · Parties</span></div></div>
+<section id="services"><p class="eye">From the truck</p><h2>Made fresh, on the spot</h2><div class="cards"><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></div><h3>Woodfired Pizza</h3><p>Pizza cooked fresh to order at your event — the crowd favourite.</p><div class="acts"><button class="ord" onclick="orderItem('Woodfired Pizza')">Order now</button><a class="ask" href="mailto:puntinocateringandevents@gmail.com?subject=Woodfired%20Pizza%20enquiry%20-%20AS%20Italian%20Street%20Food">Ask a question</a></div></div><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></div><h3>Arrosticini</h3><p>Traditional Italian lamb skewers, grilled over charcoal the Abruzzo way.</p><div class="acts"><button class="ord" onclick="orderItem('Arrosticini')">Order now</button><a class="ask" href="mailto:puntinocateringandevents@gmail.com?subject=Arrosticini%20enquiry%20-%20AS%20Italian%20Street%20Food">Ask a question</a></div></div><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></div><h3>Gnocchi</h3><p>Soft potato gnocchi, made fresh and served hot from the truck.</p><div class="acts"><button class="ord" onclick="orderItem('Gnocchi')">Order now</button><a class="ask" href="mailto:puntinocateringandevents@gmail.com?subject=Gnocchi%20enquiry%20-%20AS%20Italian%20Street%20Food">Ask a question</a></div></div><div class="card"><div class="ic"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></div><h3>Panini</h3><p>Warm Italian panini, filled to order — quick, hearty festival food.</p><div class="acts"><button class="ord" onclick="orderItem('Panini')">Order now</button><a class="ask" href="mailto:puntinocateringandevents@gmail.com?subject=Panini%20enquiry%20-%20AS%20Italian%20Street%20Food">Ask a question</a></div></div></div></section>
+<section id="about" class="about"><div><p class="eye">About AS Italian Street Food</p><h2>Italian street food, made the proper way</h2>
+<p>AS Italian Street Food is the food-truck arm of Puntino Catering &amp; Events, run by Antonio Sabia — former owner of Puntino Restaurant in Woolloomooloo for 20 years, and a festival food vendor for over a decade.</p><p>We are a pre-approved mobile food vendor with the City of Canada Bay. Book the truck for your festival, event or private party, and we will bring the food to you.</p><ul class="tick"><li>Woodfired pizza, made to order</li><li>Arrosticini &amp; gnocchi — proper Italian</li><li>Festivals, events &amp; private parties</li><li>Pre-approved City of Canada Bay vendor</li></ul></div>
+<div class="visual" style="min-height:340px"><span class="bgm p1"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></span><span class="bgm p2"><svg viewBox='0 0 64 64' aria-hidden='true'><g fill='currentColor'><circle cx='32' cy='32' r='7'/><circle cx='32' cy='12' r='6'/><circle cx='32' cy='52' r='6'/><circle cx='12' cy='32' r='6'/><circle cx='52' cy='32' r='6'/></g></svg></span>
+<div class="heroic"><svg viewBox='0 0 200 200' aria-hidden='true'><g fill='none' stroke='rgba(255,255,255,.92)' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><path d='M28 78h108v52H28z'/><path d='M136 92h28l16 16v22h-44z'/><path d='M48 78V58a6 6 0 0 1 6-6h72a6 6 0 0 1 6 6v20'/><path d='M28 96h108'/><path d='M60 78v18M100 78v18'/></g><circle cx='62' cy='134' r='13' fill='rgba(255,255,255,.92)'/><circle cx='152' cy='134' r='13' fill='rgba(255,255,255,.92)'/><circle cx='62' cy='134' r='5' fill='#b03a2e'/><circle cx='152' cy='134' r='5' fill='#b03a2e'/></svg></div><span class="chip">Puntino Catering &amp; Events</span></div></section>
+
+<div class="bookwrap" id="order"><section class="bk2"><div><p class="eye">Book the truck</p><h2>Book the truck for your event</h2>
+<p>No more chasing vendors by phone. Tell us about your event, pick what you would like served and send — we will reply by email to confirm.</p></div><div class="fm">
+ <h3>Book the truck</h3>
+ <p class="note">Send your event details and we will reply by email to confirm availability.</p>
+ <div class="row"><div><label for="n">Your name</label><input id="n" placeholder="Your name"></div>
+ <div><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div></div>
+ <div class="row"><div><label for="t">Event date</label><input id="t" type="date"></div>
+ <div><label for="d">Event location</label><input id="d" placeholder="e.g. Norton Street Festa, Leichhardt"></div></div>
+ <label for="it">What would you like served?</label><select id="it"><option>Woodfired Pizza</option><option>Arrosticini</option><option>Gnocchi</option><option>Panini</option><option>Not sure yet</option></select>
+ <label for="m">Details</label><textarea id="m" placeholder="How many guests, what time, anything we should know..."></textarea>
+ <button class="send" onclick="send()">Book the truck</button>
+ <div class="ok" id="ok">Opening your email app with your enquiry…</div>
+</div></section></div>
+<section id="visit" class="visit"><div><h4>Where</h4><p>Mobile food truck · Sydney’s Inner West — find this week’s spot on Facebook &amp; Instagram</p></div>
+<div><h4>Hours</h4><p>Trading at festivals &amp; events across Sydney — check Facebook &amp; Instagram for this week’s location</p></div>
+<div><h4>Email</h4><p><a href="mailto:puntinocateringandevents@gmail.com">puntinocateringandevents@gmail.com</a></p></div>
+<div><h4>Phone</h4><p><a href="tel:0415789674">0415 789 674</a></p></div></section>
+<footer><p>© AS Italian Street Food · Sydney, NSW, Australia</p><p class="by">Preview website by Saad Ahmed</p></footer>
+<a class="fab" href="#order">Book the truck</a>
+<script>
+function send(){var g=function(i){return encodeURIComponent(document.getElementById(i).value)};var b="Name: "+g('n')+"%0AEmail: "+g('e')+"%0AEvent date: "+g('t')+"%0AEvent location: "+g('d')+"%0AWhat would you like served?: "+g('it')+"%0ADetails: "+g('m');document.getElementById('ok').style.display='block';location.href="mailto:puntinocateringandevents@gmail.com?subject=Truck%20booking%20enquiry%20-%20AS%20Italian%20Street%20Food&body="+b;}
+function orderItem(x){document.getElementById('it').value=x;document.getElementById('order').scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('n').focus()},700);}
+</script>
+</body>
+</html>
